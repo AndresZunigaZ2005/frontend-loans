@@ -1,0 +1,105 @@
+/* solicitudPrestamoStyles.css */
+
+/* Estilos para el formulario */
+form {
+    margin: 20px 0;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    max-width: 400px;
+  }
+  
+  form h2 {
+    font-size: 20px;
+    margin-bottom: 15px;
+    color: #3590F3;
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+    color: #141414;
+  }
+  
+  input[type="text"] {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+  
+  button[type="submit"] {
+    background-color: #3590F3;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  button[type="submit"]:hover {
+    background-color: #2a72c1;
+  }
+  
+  /* Estilos para la tabla de solicitudes */
+  table.solicitud-lista {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background-color: #EEF0F2;
+  }
+  
+  th, td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  th {
+    background-color: #EEC643;
+    color: #141414;
+  }
+  
+  tr:hover {
+    background-color: #f1f1f1;
+  }
+  
+  select {
+    padding: 5px;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+    margin-right: 10px;
+  }
+  
+  button {
+    padding: 8px 12px;
+    background-color: #3590F3;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #2a72c1;
+  }
+  
+  button[disabled] {
+    background-color: #ddd;
+    cursor: not-allowed;
+  }
+  
+  button.alerta {
+    background-color: #e74c3c;
+  }
+  
+  button.alerta:hover {
+    background-color: #c0392b;
+  }
+  
+  

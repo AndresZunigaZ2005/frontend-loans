@@ -1,4 +1,7 @@
+/* src/App.css */
+
 .App {
+  display: flex; /* Cambia la disposición para incluir el sidebar */
   text-align: center;
 }
 
@@ -35,4 +38,26 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+/* Nueva clase para el contenido principal */
+.content {
+  flex-grow: 1; /* Permite que el contenido ocupe el espacio restante */
+  transition: margin-left 0.3s ease; /* Transición suave para el desplazamiento */
+}
+
+/* Desplaza el contenido cuando el sidebar está abierto */
+.sidebar.open + .content {
+  margin-left: 250px; /* Desplazamiento al abrir el sidebar */
+}
+
+/* Estilos de sobreposición opcional (si deseas usar) */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Fondo oscuro con opacidad */
+  z-index: 500; /* Asegúrate de que esté debajo del sidebar pero encima del contenido */
 }
