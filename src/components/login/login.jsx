@@ -1,10 +1,11 @@
 import React from 'react';
-import { Container, Form, Button, Row, Col } from 'react-bootstrap';
+import { Container, Form, Button, Row, Col, FormGroup } from 'react-bootstrap';
 
 function LogIn() {
   return (
     <Container className="d-flex justify-content-center align-items-center vh-100">
-      <Form style={{ width: '300px' }}>
+      <Form style={{ width: '600px' }}>
+      <h1>Inicio de Sesión</h1>
         <Form.Group className="mb-3" controlId="formBasicEmail">
           <Form.Label>Email address</Form.Label>
           <Form.Control type="email" placeholder="Enter email" />

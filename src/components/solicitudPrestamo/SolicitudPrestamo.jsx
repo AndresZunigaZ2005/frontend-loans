@@ -1,31 +1,67 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Form, Button, Container, Row, Col } from 'react-bootstrap';
 
 function SolicitudPrestamo() {
+  const [listaEmpleados, setListaEmpleados] = useState([]);
   const [empleado, setEmpleado] = useState('');
   const [montoSolicitado, setMontoSolicitado] = useState('');
   const [periodoMeses, setPeriodoMeses] = useState('');
 
+  // Cargar los empleados desde la base de datos (simulado aquí con una API)
+  useEffect(() => {
+    // Simulación de llamada a API
+    const cargarEmpleados = async () => {
+      const empleados = await fetch('/api/empleados').then((res) => res.json());
+      setListaEmpleados(empleados);
+    };
+
+    cargarEmpleados();
+  }, []);
+
   const handleSubmit = (event) => {
     event.preventDefault();
-    // Aquí iría la lógica para enviar los datos del formulario
-    console.log({ empleado, montoSolicitado, periodoMeses });
+
+    const fechaSolicitud = new Date().toISOString(); // Fecha actual
+    const estado = 'PENDIENTE';
+
+    const solicitud = {
+      empleado,
+      montoSolicitado,
+      periodoMeses,
+      fechaSolicitud,
+      estado,
+    };
+
+    // Aquí iría la lógica para enviar la solicitud
+    console.log(solicitud);
+
+    // Simulación de envío
+    // fetch('/api/solicitudes', {
+    //   method: 'POST',
+    //   body: JSON.stringify(solicitud),
+    //   headers: { 'Content-Type': 'application/json' },
+    // });
   };
 
   return (
-    <Container className="mt-5">
-      <Row className="justify-content-md-center">
+    <Container className="d-flex justify-content-center align-items-center vh-100">
+      <Row className="justify-content-md-center w-100">
         <Col md="6">
-          <h2>Solicitud de Préstamo</h2>
           <Form onSubmit={handleSubmit}>
+            <h1 className="text-center">Solicitud de Préstamo</h1>
             <Form.Group controlId="formEmpleado">
               <Form.Label>Empleado</Form.Label>
-              <Form.Control
-                type="text"
-                placeholder="Ingrese el nombre del empleado"
+              <Form.Select
                 value={empleado}
                 onChange={(e) => setEmpleado(e.target.value)}
-              />
+              >
+                <option value="">Seleccione un empleado</option>
+                {listaEmpleados.map((emp) => (
+                  <option key={emp.id} value={emp.id}>
+                    {emp.nombre}
+                  </option>
+                ))}
+              </Form.Select>
             </Form.Group>
 
             <Form.Group controlId="formMontoSolicitado" className="mt-3">
@@ -48,7 +84,7 @@ function SolicitudPrestamo() {
               />
             </Form.Group>
 
-            <Button variant="primary" type="submit" className="mt-4">
+            <Button variant="primary" type="submit" className="mt-4 w-100">
               Enviar Solicitud
             </Button>
           </Form>

@@ -31,7 +31,7 @@ const PrestamoCRUD = () => {
   };
 
   return (
-    <div>
+    <div className="content">
       <SolicitudPrestamoForm onSearch={handleSearch} />
       <SolicitudPrestamoLista solicitudes={solicitudes} onChangeEstado={handleChangeEstado} />
     </div>

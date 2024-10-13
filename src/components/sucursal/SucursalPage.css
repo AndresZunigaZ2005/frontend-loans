@@ -1,0 +1,10 @@
+.sucursal-page {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+.sucursal-lista-container {
+    flex-grow: 1;
+    margin-left: 60px;
+}

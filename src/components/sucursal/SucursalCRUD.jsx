@@ -1,59 +1,74 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import SucursalForm from './SucursalForm';
+import SucursalLista from './SucursalLista';
+import './SucursalPage.css'; // Importar el archivo CSS
 
-const SucursalCRUD = () => {
-    const [nombre, setNombre] = useState('');
-    const [municipio, setMunicipio] = useState('');
+// Datos simulados para departamentos y municipios
+const departamentosSimulados = [
+    { id: 1, nombre: 'Antioquia' },
+    { id: 2, nombre: 'Cundinamarca' },
+    { id: 3, nombre: 'Valle del Cauca' }
+];
+
+const municipiosSimulados = [
+    { id: 1, nombre: 'Medellín', departamentoId: 1 },
+    { id: 2, nombre: 'Envigado', departamentoId: 1 },
+    { id: 3, nombre: 'Bogotá', departamentoId: 2 },
+    { id: 4, nombre: 'Cali', departamentoId: 3 },
+    { id: 5, nombre: 'Palmira', departamentoId: 3 }
+];
+
+const SucursalPage = () => {
     const [sucursales, setSucursales] = useState([]);
+    const [sucursalToEdit, setSucursalToEdit] = useState(null);
+    const [departamentos, setDepartamentos] = useState([]);
+    const [municipios, setMunicipios] = useState([]);
 
-    // Simulación de datos de municipios (deberías obtener esto de tu backend)
-    const municipios = [
-        { id: '1', nombre: 'Municipio 1' },
-        { id: '2', nombre: 'Municipio 2' },
-        { id: '3', nombre: 'Municipio 3' },
-    ];
+    useEffect(() => {
+        setDepartamentos(departamentosSimulados);
+        setMunicipios(municipiosSimulados);
+    }, []);
 
-    const handleAddSucursal = (e) => {
-        e.preventDefault();
-        const nuevaSucursal = { id: Date.now(), nombre, municipio }; // Genera un ID único simple
-        setSucursales([...sucursales, nuevaSucursal]);
-        setNombre(''); // Limpia el campo
-        setMunicipio(''); // Limpia el campo
+    const handleAddOrUpdateSucursal = (newSucursal) => {
+        if (sucursalToEdit) {
+            setSucursales(sucursales.map(s => 
+                s.id === sucursalToEdit.id ? { ...sucursalToEdit, ...newSucursal } : s
+            ));
+            setSucursalToEdit(null);
+        } else {
+            const nuevaSucursal = { ...newSucursal, id: sucursales.length + 1 };
+            setSucursales([...sucursales, nuevaSucursal]);
+        }
+    };
+
+    const handleEditSucursal = (sucursal) => {
+        setSucursalToEdit(sucursal);
+    };
+
+    const handleDeleteSucursal = (id) => {
+        setSucursales(sucursales.filter(s => s.id !== id));
     };
 
     return (
-        <div>
-            <h2>Agregar Sucursal</h2>
-            <form onSubmit={handleAddSucursal}>
-                <label>
-                    Nombre:
-                    <input 
-                        type="text" 
-                        value={nombre} 
-                        onChange={(e) => setNombre(e.target.value)} 
-                        required 
-                    />
-                </label>
-                <label>
-                    Municipio:
-                    <select value={municipio} onChange={(e) => setMunicipio(e.target.value)} required>
-                        <option value="">Selecciona un municipio</option>
-                        {municipios.map(m => (
-                            <option key={m.id} value={m.id}>{m.nombre}</option>
-                        ))}
-                    </select>
-                </label>
-                <button type="submit">Agregar Sucursal</button>
-            </form>
-            <h2>Lista de Sucursales</h2>
-            <ul>
-                {sucursales.map(s => (
-                    <li key={s.id}>
-                        {s.nombre} - Municipio: {municipios.find(m => m.id === s.municipio)?.nombre}
-                    </li>
-                ))}
-            </ul>
+        <div className="sucursal-page">
+            <h1>Gestión de Sucursales</h1>
+            
+            <SucursalForm 
+                onSubmit={handleAddOrUpdateSucursal} 
+                sucursal={sucursalToEdit} 
+                departamentos={departamentos} 
+                municipios={municipios} 
+            />
+
+            <div className="sucursal-lista-container"> {/* Aplicar clase CSS */}
+                <SucursalLista 
+                    sucursales={sucursales} 
+                    onEdit={handleEditSucursal} 
+                    onDelete={handleDeleteSucursal} 
+                />
+            </div>
         </div>
     );
 };
 
-export default SucursalCRUD;
+export default SucursalPage;

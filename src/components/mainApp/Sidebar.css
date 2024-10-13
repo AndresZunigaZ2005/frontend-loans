@@ -1,60 +1,60 @@
 /* src/components/Sidebar.css */
 
 .sidebar {
-    position: fixed;
-    top: 0;
-    left: -250px; /* Mueve el sidebar fuera de la vista */
-    height: 100%;
-    width: 250px;
-    background-color: #343a40; /* Color de fondo */
-    color: white;
-    transition: left 0.3s ease; /* Transición suave */
-    z-index: 1000; /* Asegúrate de que esté por encima de otros elementos */
-  }
-  
-  .sidebar.open {
-    left: 0; /* Muestra el sidebar */
-  }
-  
-  .sidebar-header {
-    padding: 15px;
-    text-align: center;
-    background-color: #495057; /* Color de encabezado */
-  }
-  
-  .sidebar-list {
-    list-style: none;
-    padding: 0;
-  }
-  
-  .sidebar-list li {
-    padding: 15px;
-    text-align: left;
-  }
-  
-  .sidebar-list li a {
-    color: white; /* Color de los enlaces */
-    text-decoration: none;
-  }
-  
-  .sidebar-list li:hover {
-    background-color: #495057; /* Color al pasar el mouse */
-  }
-  
-  /* Overlay */
-  .overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 100%;
-    background-color: rgba(0, 0, 0, 0.5); /* Fondo oscuro con opacidad */
-    z-index: 500; /* Asegúrate de que esté debajo del sidebar pero encima del contenido */
-  }
-  
-  /* Estilos responsivos */
-  @media (max-width: 768px) {
-    .sidebar {
-      width: 200px; /* Cambia el ancho para pantallas más pequeñas */
-    }
-  }  
+  width: 60px; /* Ancho del menú cerrado */
+  height: 100vh;
+  background-color: #f8f9fa;
+  position: fixed;
+  transition: width 0.3s ease;
+  overflow: hidden; /* Evita que se muestre contenido cuando está cerrado */
+  border-right: 1px solid #ddd;
+}
+
+.sidebar.open {
+  width: 200px; /* Ancho del menú abierto */
+}
+
+.sidebar-header {
+  text-align: center;
+  padding: 20px 0;
+}
+
+.sidebar-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.sidebar-list li {
+  padding: 0; /* Eliminar padding aquí */
+}
+
+.sidebar-list li a {
+  text-decoration: none;
+  color: #141414;
+  display: block; /* Ocupa todo el ancho disponible */
+  padding: 15px; /* Aplicar el padding dentro del enlace */
+  transition: color 0.3s, background-color 0.3s; /* Transición suave */
+  width: 100%; /* El enlace ocupará el 100% del espacio */
+  height: 100%; /* Asegura que el enlace tome la altura del li */
+}
+
+.sidebar-list li:hover {
+  background-color: #eec643;
+}
+
+.sidebar-list li a:hover {
+  color: #3590F3;
+}
+
+/* Ocultar enlaces cuando el sidebar esté cerrado */
+.sidebar-list li a {
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s, visibility 0.3s;
+}
+
+/* Mostrar enlaces cuando el sidebar esté abierto */
+.sidebar.open .sidebar-list li a {
+  opacity: 1;
+  visibility: visible;
+}

@@ -5,16 +5,18 @@ const SucursalLista = ({ sucursales, onEdit, onDelete }) => {
         <table className="sucursal-lista">
             <thead>
                 <tr>
-                    <th>Nombre</th>
+                    <th>Departamento</th> {/* Nueva columna Departamento */}
                     <th>Municipio</th>
+                    <th>Nombre</th>
                     <th>Acciones</th>
                 </tr>
             </thead>
             <tbody>
                 {sucursales.map((sucursal) => (
                     <tr key={sucursal.id}>
-                        <td>{sucursal.nombre}</td>
+                        <td>{sucursal.municipio.departamento.nombre}</td> {/* Mostrar el nombre del departamento */}
                         <td>{sucursal.municipio.nombre}</td>
+                        <td>{sucursal.nombre}</td>
                         <td>
                             <button onClick={() => onEdit(sucursal)}>Editar</button>
                             <button onClick={() => onDelete(sucursal.id)}>Eliminar</button>
