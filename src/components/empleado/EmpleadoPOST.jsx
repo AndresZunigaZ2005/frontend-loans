@@ -83,11 +83,6 @@ function EmpleadoPOST() {
                 </div>
               </div>
 
-              {/* Suscripción al boletín */}
-              <div className='mb-4'>
-                <MDBCheckbox name='flexCheck' value='' id='flexCheckDefault' label='Suscribirse al boletín'/>
-              </div>
-
               {/* Botón de registro */}
               <MDBBtn className='mb-4' size='lg'>Registrar</MDBBtn>
 

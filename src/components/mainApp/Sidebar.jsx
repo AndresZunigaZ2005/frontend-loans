@@ -2,35 +2,45 @@
 
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import './Sidebar.css'; // Asegúrate de crear el archivo de estilos
+import './Sidebar.css';
 import '@fortawesome/fontawesome-free/css/all.min.css'; // Importar Font Awesome
 
 const Sidebar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div className={`sidebar ${isOpen ? 'open' : ''}`} onMouseEnter={() => setIsOpen(true)} onMouseLeave={() => setIsOpen(false)}>
+    <div
+      className={`sidebar ${isOpen ? 'open' : ''}`}
+      onMouseEnter={() => setIsOpen(true)}
+      onMouseLeave={() => setIsOpen(false)}
+    >
       <div className="sidebar-header">
-        <i className="fas fa-bars"></i> {/* Ícono de tres rayas */}
+        <i className="fas fa-bars"></i>
       </div>
       <ul className="sidebar-list">
         <li>
-          <Link to="/">Inicio</Link>
+          <Link to="/solicitud-prestamo">
+            <i className="fas fa-file-alt"></i> {/* Ícono de Solicitud de Préstamo */}
+            {isOpen && <span>Solicitud de Préstamo</span>}
+          </Link>
         </li>
         <li>
-          <Link to="/login">Iniciar Sesión</Link>
+          <Link to="/crud-empleado">
+            <i className="fas fa-users"></i> {/* Ícono de CRUD de Empleado */}
+            {isOpen && <span>CRUD del Empleado</span>}
+          </Link>
         </li>
         <li>
-          <Link to="/solicitud-prestamo">Solicitud de Préstamo</Link>
+          <Link to="/crud-sucursal">
+            <i className="fas fa-building"></i> {/* Ícono de CRUD de Sucursal */}
+            {isOpen && <span>CRUD de Sucursal</span>}
+          </Link>
         </li>
         <li>
-          <Link to="/crud-empleado">CRUD del Empleado</Link>
-        </li>
-        <li>
-          <Link to="/crud-sucursal">CRUD de Sucursal</Link>
-        </li>
-        <li>
-          <Link to="/crud-prestamo">Crear Préstamo</Link>
+          <Link to="/crud-prestamo">
+            <i className="fas fa-money-check-alt"></i> {/* Ícono de Crear Préstamo */}
+            {isOpen && <span>Crear Préstamo</span>}
+          </Link>
         </li>
       </ul>
     </div>

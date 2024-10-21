@@ -1,60 +1,58 @@
 /* src/components/Sidebar.css */
 
 .sidebar {
-  width: 60px; /* Ancho del menú cerrado */
-  height: 100vh;
-  background-color: #f8f9fa;
   position: fixed;
-  transition: width 0.3s ease;
-  overflow: hidden; /* Evita que se muestre contenido cuando está cerrado */
-  border-right: 1px solid #ddd;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 60px; /* Ancho cuando está colapsada */
+  background-color: #3590F3;
+  transition: width 0.3s;
+  overflow: hidden;
 }
 
 .sidebar.open {
-  width: 200px; /* Ancho del menú abierto */
+  width: 200px; /* Ancho cuando está abierta */
 }
 
 .sidebar-header {
+  padding: 15px;
   text-align: center;
-  padding: 20px 0;
+  background-color: #141414;
+  color: white;
 }
 
 .sidebar-list {
-  list-style-type: none;
+  list-style: none;
   padding: 0;
+  margin: 0;
 }
 
 .sidebar-list li {
-  padding: 0; /* Eliminar padding aquí */
+  padding: 15px;
 }
 
 .sidebar-list li a {
   text-decoration: none;
-  color: #141414;
-  display: block; /* Ocupa todo el ancho disponible */
-  padding: 15px; /* Aplicar el padding dentro del enlace */
-  transition: color 0.3s, background-color 0.3s; /* Transición suave */
-  width: 100%; /* El enlace ocupará el 100% del espacio */
-  height: 100%; /* Asegura que el enlace tome la altura del li */
-}
-
-.sidebar-list li:hover {
-  background-color: #eec643;
+  color: white;
+  display: flex;
+  align-items: center;
+  transition: color 0.3s;
 }
 
 .sidebar-list li a:hover {
-  color: #3590F3;
+  color: #EEC643;
 }
 
-/* Ocultar enlaces cuando el sidebar esté cerrado */
-.sidebar-list li a {
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity 0.3s, visibility 0.3s;
+.sidebar-list li a i {
+  margin-right: 10px;
+  font-size: 20px;
 }
 
-/* Mostrar enlaces cuando el sidebar esté abierto */
-.sidebar.open .sidebar-list li a {
-  opacity: 1;
-  visibility: visible;
+.sidebar-list li a span {
+  display: none; /* Ocultar el texto cuando la barra está colapsada */
+}
+
+.sidebar.open .sidebar-list li a span {
+  display: inline; /* Mostrar el texto cuando la barra está abierta */
 }

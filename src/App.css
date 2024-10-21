@@ -44,6 +44,7 @@
 .content {
   flex-grow: 1; /* Permite que el contenido ocupe el espacio restante */
   transition: margin-left 0.3s ease; /* Transición suave para el desplazamiento */
+  padding-top: 70px
 }
 
 /* Desplaza el contenido cuando el sidebar está abierto */

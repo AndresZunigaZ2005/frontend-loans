@@ -31,11 +31,13 @@ const PrestamoCRUD = () => {
   };
 
   return (
-    <div className="content">
+    <div style={{ marginLeft: '50px' }}>
+      <h1>Vista de solicitud de Préstamos</h1>
       <SolicitudPrestamoForm onSearch={handleSearch} />
       <SolicitudPrestamoLista solicitudes={solicitudes} onChangeEstado={handleChangeEstado} />
     </div>
   );
+  
 };
 
 export default PrestamoCRUD;
