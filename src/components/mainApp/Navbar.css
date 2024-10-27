@@ -1,16 +1,24 @@
-/* src/components/Navbar.css */
-
 .navbar {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    z-index: 1000; /* Asegúrate de que esté siempre encima */
-  }
-  
-  .navbar-nav .nav-item .nav-link {
-    color: #3590F3; /* Color de los enlaces */
-  }
-  
-  .navbar-brand {
-    font-weight: bold;
-  }  
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000; /* Asegúrate de que esté siempre encima */
+}
+
+.navbar-nav .nav-item .nav-link {
+  color: #3590F3; /* Color de los enlaces */
+}
+
+.navbar-nav .nav-item .nav-link:hover {
+  color: #EEC643; /* Color de hover */
+}
+
+.navbar-brand{
+  color: black;
+  font-weight: bold;
+}
+
+.navbar-brand:hover {
+  color: #EEC643; 
+  font-weight: bold; /* Aumentar el peso de la fuente al hacer hover */
+}

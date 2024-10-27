@@ -11,7 +11,7 @@ const Navbar = () => {
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
       <div className="container-fluid">
         <Link className="navbar-brand" to="/">
-          <i className="fas fa-home"></i> MiAplicación
+          <i className="fas fa-home"></i> Vista Principal
         </Link>
         <button
           className="navbar-toggler"
