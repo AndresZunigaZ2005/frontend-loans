@@ -25,12 +25,6 @@ const Sidebar = () => {
           </Link>
         </li>
         <li>
-          <Link to="/crud-empleado">
-            <i className="fas fa-users"></i> {/* Ícono de CRUD de Empleado */}
-            {isOpen && <span>CRUD del Empleado</span>}
-          </Link>
-        </li>
-        <li>
           <Link to="/crud-sucursal">
             <i className="fas fa-building"></i> {/* Ícono de CRUD de Sucursal */}
             {isOpen && <span>CRUD de Sucursal</span>}
@@ -40,6 +34,12 @@ const Sidebar = () => {
           <Link to="/crud-prestamo">
             <i className="fas fa-money-check-alt"></i> {/* Ícono de Crear Préstamo */}
             {isOpen && <span>Crear Préstamo</span>}
+          </Link>
+        </li>
+        <li>
+          <Link to="/auditoria-usuario">
+          <i class="fa-solid fa-user-secret"></i>
+          {isOpen && <span>Auditoria de Usuario</span>}
           </Link>
         </li>
       </ul>

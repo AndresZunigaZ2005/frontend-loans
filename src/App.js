@@ -11,6 +11,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import PrestamoCRUD from './components/prestamo/PrestamoCRUD';
 import Sidebar from './components/mainApp/Sidebar'; 
 import EmpleadoList from './components/empleado/EmpleadoList';
+import AuditoriaUsuario from './components/auditoriaUsuario/AuditoriaUsuarioForm';
 import EmpleadoCRUD from './components/empleado/EmpleadoCRUD';
 import Navbar from './components/mainApp/Navbar'; // Importa el nuevo componente de la barra superior
 
@@ -24,12 +25,13 @@ function App() {
           <Routes>
             <Route path="/" element={<h1>Bienvenido a la aplicación</h1>} />
             <Route path="/login" element={<LogIn />} />
-            <Route path="/register" element={<h2>Página de Registro</h2>} />
+            <Route path="/register" element={<h2><EmpleadoPOST/></h2>} />
             <Route path="/solicitud-prestamo" element={<SolicitudPrestamo />} />
             <Route path="/crud-empleado" element={<EmpleadoCRUD />} />
             <Route path="/lista-empleados" element={<EmpleadoList />} />
             <Route path="/crud-sucursal" element={<SucursalCRUD />} />
             <Route path="/crud-prestamo" element={<PrestamoCRUD />} />
+            <Route path="/auditoria-usuario" element={<AuditoriaUsuario/>}/>
           </Routes>
         </div>
       </div>

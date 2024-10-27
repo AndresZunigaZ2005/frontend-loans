@@ -1,0 +1,48 @@
+.auditoria-container {
+    align-items: flex-start;
+    margin-left: 60px;
+  }
+  
+  .auditoria-table {
+    border-collapse: collapse;
+    width: 60%;
+    margin-right: 20px;
+  }
+  
+  .auditoria-table th, .auditoria-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+  }
+  
+  .auditoria-table th {
+    background-color: #3590F3;
+    color: white;
+    padding-top: 12px;
+    padding-bottom: 12px;
+  }
+  
+  .auditoria-table tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+  
+  .auditoria-table tr:hover {
+    background-color: #ddd;
+  }
+  
+  .auditoria-image img {
+    width: 200px;
+    height: auto;
+    margin-left: 20px;
+    animation: float 2s ease-in-out infinite;
+  }
+  
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+  
