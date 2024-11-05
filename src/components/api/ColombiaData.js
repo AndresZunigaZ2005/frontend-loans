@@ -42,4 +42,4 @@ const GeoNamesAPIComponent = () => {
   // Manejar el cambio de departamento
   const handleDepartamentoChange = (e) => {
     setSelectedDepartamento(e.target.value);
-  }
+  }}

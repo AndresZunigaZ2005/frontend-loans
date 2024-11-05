@@ -21,7 +21,7 @@ const Sidebar = () => {
         <li>
           <Link to="/solicitud-prestamo">
             <i className="fas fa-file-alt"></i> {/* Ícono de Solicitud de Préstamo */}
-            {isOpen && <span>Solicitud de Préstamo</span>}
+            {isOpen && <span>Solicitud Préstamo</span>}
           </Link>
         </li>
         <li>
@@ -38,8 +38,20 @@ const Sidebar = () => {
         </li>
         <li>
           <Link to="/auditoria-usuario">
-          <i class="fa-solid fa-user-secret"></i>
-          {isOpen && <span>Auditoria de Usuario</span>}
+            <i className="fa-solid fa-user-secret"></i>
+            {isOpen && <span>Auditoria Usuario</span>}
+          </Link>
+        </li>
+        <li>
+          <Link to="/pago">
+            <i className="fa-solid fa-credit-card"></i>
+            {isOpen && <span>Realizar pagos</span>}
+          </Link>
+        </li>
+        <li>
+          <Link to="/reportes">
+            <i className="fa-solid fa-file-alt"></i>
+            {isOpen && <span>Reportes</span>}
           </Link>
         </li>
       </ul>

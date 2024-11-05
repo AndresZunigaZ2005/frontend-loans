@@ -1,0 +1,55 @@
+.contenedorGeneralPago {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.formularioPago {
+    display: flex;
+    flex-direction: column;
+    width: 300px; /* Ajusta el ancho del formulario según sea necesario */
+    background-color: #f9f9f9; /* Color de fondo del formulario */
+    padding: 20px; /* Espaciado interno del formulario */
+    border-radius: 5px; /* Esquinas redondeadas */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Sombra del formulario */
+}
+
+.formularioPago div {
+    margin-bottom: 15px; /* Espaciado entre campos del formulario */
+}
+
+.formularioPago button {
+    margin-top: 20px; /* Espacio entre el último campo y el botón */
+    padding: 10px; /* Espaciado interno del botón */
+    background-color: #3498db; /* Color de fondo */
+    color: white; /* Color del texto */
+    border: none; /* Sin borde */
+    cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
+    font-size: 16px; /* Tamaño de fuente */
+    border-radius: 5px; /* Esquinas redondeadas del botón */
+}
+
+.formularioPago button:hover {
+    background-color: #2980b9; /* Color al pasar el mouse */
+}
+
+.informacionPrestamo {
+    margin-left: 20px; /* Espacio a la izquierda de la sección de información */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 20px; /* Espaciado interno para la información */
+    background-color: #EEC643; /* Color de fondo para la sección de información */
+    border-radius: 5px; /* Esquinas redondeadas */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Sombra para la sección de información */
+    border: #818181 solid 2px;
+}
+
+.infoRow {
+    display: flex;
+    justify-content: space-between; /* Alinea los labels y los valores */
+    margin-bottom: 10px; /* Espaciado entre las filas de información */
+}
+
