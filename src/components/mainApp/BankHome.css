@@ -1,0 +1,38 @@
+.bank-home {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin-bottom: 40px;
+  }
+  
+  h2, h3 {
+    color: #141414;
+    font-family: 'Roboto', sans-serif;
+  }
+  
+  p {
+    color: #333;
+    font-size: 1.1em;
+    line-height: 1.6;
+    max-width: 600px;
+  }
+  
+  .bank-image, .loan-image, .services-image {
+    width: 100%;
+    max-width: 300px; /* Ajusta el tamaño máximo de la imagen */
+    margin-top: 20px;
+    border-radius: 8px;
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .bank-image:hover, .loan-image:hover, .services-image:hover {
+    transform: scale(1.05); /* Efecto de ampliación al pasar el ratón */
+  }
+  
