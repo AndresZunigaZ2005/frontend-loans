@@ -16,6 +16,7 @@ import EmpleadoCRUD from './components/empleado/EmpleadoCRUD';
 import Navbar from './components/mainApp/Navbar';
 import Pago from "./components/Pago/Pago";
 import Reportes from "./components/Reportes/Reportes"; // Importa el nuevo componente de la barra superior
+import BankHome from './components/mainApp/BankHome';
 
 function App() {
   return (
@@ -25,7 +26,7 @@ function App() {
         <Sidebar /> {/* Mantén el Sidebar a la izquierda */}
         <div className="content"> {/* Para mantener el contenido separado */}
           <Routes>
-            <Route path="/" element={<h1>Bienvenido a la aplicación</h1>} />
+            <Route path="/" element={<BankHome/>} />
             <Route path="/login" element={<LogIn />} />
             <Route path="/register" element={<h2><EmpleadoPOST/></h2>} />
             <Route path="/solicitud-prestamo" element={<SolicitudPrestamo />} />
