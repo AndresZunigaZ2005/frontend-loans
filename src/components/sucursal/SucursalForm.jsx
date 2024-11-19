@@ -1,25 +1,44 @@
 import React, { useState, useEffect } from 'react';
 
-const SucursalForm = ({ onSubmit, sucursal, municipios }) => {
+const SucursalForm = ({ onSubmit, sucursal }) => {
     const [nombre, setNombre] = useState(sucursal ? sucursal.nombre : '');
-    const [departamentoId, setDepartamentoId] = useState(sucursal ? sucursal.municipio.departamentoId : '');
-    const [municipioId, setMunicipioId] = useState(sucursal ? sucursal.municipio.id : '');
+    const [departamentoId, setDepartamentoId] = useState(
+        sucursal && sucursal.municipio ? sucursal.municipio.departamento_id : ''
+    );
+    const [municipioId, setMunicipioId] = useState(
+        sucursal ? sucursal.municipio_id : ''
+    );
+    const [municipios, setMunicipios] = useState([]);
     const [municipiosFiltrados, setMunicipiosFiltrados] = useState([]);
     const [departamentos, setDepartamentos] = useState([]);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
 
-    // Fetch departamentos al cargar el componente
+    // Cargar departamentos y municipios al cargar el componente
     useEffect(() => {
-        const fetchDepartamentos = async () => {
+        const fetchData = async () => {
             setLoading(true);
             try {
-                const response = await fetch('http://localhost:5000/sucursales/obtener_departamentos');
-                if (!response.ok) {
-                    throw new Error(`Error al obtener los departamentos: ${response.statusText}`);
+                // Fetch departamentos
+                const depResponse = await fetch('http://localhost:5000/sucursales/obtener_departamentos');
+                if (!depResponse.ok) throw new Error('Error al cargar los departamentos');
+                const depData = await depResponse.json();
+
+                // Fetch municipios
+                const munResponse = await fetch('http://localhost:5000/sucursales/obtener_municipios');
+                if (!munResponse.ok) throw new Error('Error al cargar los municipios');
+                const munData = await munResponse.json();
+
+                setDepartamentos(depData);
+                setMunicipios(munData);
+
+                // Filtrar municipios si ya hay un departamento seleccionado
+                if (departamentoId) {
+                    const filtrados = munData.filter(
+                        (municipio) => municipio.departamento_id === parseInt(departamentoId)
+                    );
+                    setMunicipiosFiltrados(filtrados);
                 }
-                const data = await response.json();
-                setDepartamentos(data);
             } catch (err) {
                 setError(err.message);
             } finally {
@@ -27,16 +46,16 @@ const SucursalForm = ({ onSubmit, sucursal, municipios }) => {
             }
         };
 
-        fetchDepartamentos();
+        fetchData();
     }, []);
 
-    // Filtrar municipios cada vez que se selecciona un departamento
+    // Filtrar municipios cuando se selecciona un departamento
     useEffect(() => {
         if (departamentoId) {
-            const municipiosDelDepartamento = municipios.filter(
-                municipio => municipio.departamentoId === parseInt(departamentoId)
+            const filtrados = municipios.filter(
+                (municipio) => municipio.departamento_id === parseInt(departamentoId)
             );
-            setMunicipiosFiltrados(municipiosDelDepartamento);
+            setMunicipiosFiltrados(filtrados);
         } else {
             setMunicipiosFiltrados([]);
         }
@@ -44,10 +63,10 @@ const SucursalForm = ({ onSubmit, sucursal, municipios }) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        onSubmit({ nombre, municipio: municipioId });
+        onSubmit({ nombre, municipio_id: municipioId });
     };
 
-    if (loading) return <p>Cargando departamentos...</p>;
+    if (loading) return <p>Cargando...</p>;
     if (error) return <p>Error: {error}</p>;
 
     return (
@@ -72,7 +91,7 @@ const SucursalForm = ({ onSubmit, sucursal, municipios }) => {
                     required
                 >
                     <option value="">Seleccione un departamento...</option>
-                    {departamentos.map(departamento => (
+                    {departamentos.map((departamento) => (
                         <option key={departamento.id} value={departamento.id}>
                             {departamento.nombre}
                         </option>
@@ -89,7 +108,7 @@ const SucursalForm = ({ onSubmit, sucursal, municipios }) => {
                     disabled={!departamentoId} // Deshabilitar si no hay departamento seleccionado
                 >
                     <option value="">Seleccione un municipio...</option>
-                    {municipiosFiltrados.map(municipio => (
+                    {municipiosFiltrados.map((municipio) => (
                         <option key={municipio.id} value={municipio.id}>
                             {municipio.nombre}
                         </option>

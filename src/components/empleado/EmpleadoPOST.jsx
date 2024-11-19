@@ -29,7 +29,7 @@ function EmpleadoPOST() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch('http://localhost:8080/empleado/crear', {
+      const response = await fetch('http://localhost:5000/empleado/crear', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
