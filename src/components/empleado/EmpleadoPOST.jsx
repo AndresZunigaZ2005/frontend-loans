@@ -15,6 +15,7 @@ function EmpleadoPOST() {
   const [formData, setFormData] = useState({
     cedula: '',
     nombre: '',
+    salario: 5000000,
     cargo: '',
     nivel: '',
     email: '',
@@ -29,7 +30,7 @@ function EmpleadoPOST() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch('http://localhost:5000/empleado/crear', {
+      const response = await fetch('http://localhost:5000/empleados/crear', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
