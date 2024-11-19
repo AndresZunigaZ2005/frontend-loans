@@ -63,7 +63,7 @@ function Calculadora() {
 		<> 
 			<div className="Calculadora"> 
 				<div className="calc-body"> 
-					<h1>Scientific Calculator</h1> 
+					<h1 className="h1-calc">Scientific Calculator</h1> 
 					<div className="input-section"> 
 						<input 
 							className="screen"
