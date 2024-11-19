@@ -54,6 +54,12 @@ const Sidebar = () => {
             {isOpen && <span>Reportes</span>}
           </Link>
         </li>
+        <li>
+          <Link to="/calculadora">
+            <i className="fa-solid fa-calculator"></i>
+            {isOpen && <span>Calculadora</span>}
+          </Link>
+        </li>
       </ul>
     </div>
   );

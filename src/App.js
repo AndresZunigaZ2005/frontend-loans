@@ -17,6 +17,7 @@ import Navbar from './components/mainApp/Navbar';
 import Pago from "./components/Pago/Pago";
 import Reportes from "./components/Reportes/Reportes"; // Importa el nuevo componente de la barra superior
 import BankHome from './components/mainApp/BankHome';
+import Calculadora from './components/calculadora/Calculadora';
 
 function App() {
   return (
@@ -37,6 +38,7 @@ function App() {
             <Route path="/auditoria-usuario" element={<AuditoriaUsuario/>}/>
             <Route path="/pago" element={<Pago/>}/>
             <Route path="/reportes" element={<Reportes/>}/>
+            <Route path="/calculadora" element={<Calculadora/>}/>
           </Routes>
         </div>
       </div>
